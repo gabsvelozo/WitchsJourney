@@ -104,12 +104,20 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+<<<<<<< HEAD
       <AdditionalIncludeDirectories>C:\Users\alcel\Desktop\CesarSchool\AED\raylib\raylib-5.5_win64_msvc16\include</AdditionalIncludeDirectories>
+=======
+      <AdditionalIncludeDirectories>C:\Users\Clara Neves\AED\raylib-5.5_win64_mingw-w64\include</AdditionalIncludeDirectories>
+>>>>>>> 965129150cbdb643df577b7796a20b33648e2279
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+<<<<<<< HEAD
       <AdditionalLibraryDirectories>C:\Users\alcel\Desktop\CesarSchool\AED\raylib\raylib-5.5_win64_msvc16\lib</AdditionalLibraryDirectories>
+=======
+      <AdditionalLibraryDirectories>C:\Users\Clara Neves\AED\raylib-5.5_win64_mingw-w64\lib</AdditionalLibraryDirectories>
+>>>>>>> 965129150cbdb643df577b7796a20b33648e2279
       <AdditionalDependencies>raylib.lib;winmm.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -130,10 +138,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="draw.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="menu.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="draw.h" />
     <ClInclude Include="menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

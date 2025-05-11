@@ -31,10 +31,16 @@
     <ClCompile Include="menu.c">
       <Filter>Arquivos de Origem\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="draw.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menu.h">
       <Filter>Arquivos de Origem\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="draw.h">
+      <Filter>Arquivos de Origem\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
