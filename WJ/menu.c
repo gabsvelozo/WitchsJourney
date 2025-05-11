@@ -4,11 +4,10 @@
 
 int menu(void)
 {
-    const int screenWidth = 1820;
-    const int screenHeight = 1000;
+    const int screenWidth = 1366;
+    const int screenHeight = 720;
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
-
     SetTargetFPS(60);
 
     while (!WindowShouldClose())
@@ -16,12 +15,15 @@ int menu(void)
         BeginDrawing();
         ClearBackground(BLACK);
 
-        int fontSize = 30;
+        int fontSize = screenHeight / 24;
+        int lineSpacing = fontSize + 15;
 
         const char* title = "Bem-vindo(a) ao The Witch's Journey!";
-        DrawText(title, screenWidth / 2 - MeasureText(title, fontSize) / 2, 100, fontSize, WHITE);
+        int titleY = screenHeight / 8;
+        DrawText(title, screenWidth / 2 - MeasureText(title, fontSize) / 2, titleY, fontSize, WHITE);
 
         const char* storyLines[] = {
+            "",
             "Cora, uma jovem bruxa formada na academia de bruxas,",
             "procurou seu grande mestre Alfred para melhorar sua magia.",
             "Ele a envia para uma jornada na qual ela pode",
@@ -34,30 +36,13 @@ int menu(void)
             "a maior bruxa de sua vila?"
         };
 
-        int numLines = sizeof(storyLines) / sizeof(storyLines[0]);
-        int lineSpacing = 40;
-        int startY = 180;
+        int numStoryLines = sizeof(storyLines) / sizeof(storyLines[0]);
+        int storyStartY = titleY + fontSize + 20;
 
-        for (int i = 0; i < numLines; i++)
+        for (int i = 0; i < numStoryLines; i++)
         {
             int textWidth = MeasureText(storyLines[i], fontSize);
-            DrawText(storyLines[i], screenWidth / 2 - textWidth / 2, startY + i * lineSpacing, fontSize, WHITE);
-        }
-
-        const char* instructions[] = {
-            "Aperte ENTER para iniciar",
-            "ou ESC para sair.",
-            "Use as setas de direita e esquerda para se mover",
-            "Use a tecla W para atacar",
-            "e a barra de espaco para pular!"
-        };
-
-        int instructionStartY = 700;
-
-        for (int i = 0; i < 5; i++)
-        {
-            int textWidth = MeasureText(instructions[i], fontSize);
-            DrawText(instructions[i], screenWidth / 2 - textWidth / 2, instructionStartY + i * lineSpacing, fontSize, WHITE);
+            DrawText(storyLines[i], screenWidth / 2 - textWidth / 2, storyStartY + i * lineSpacing, fontSize, WHITE);
         }
 
         EndDrawing();
