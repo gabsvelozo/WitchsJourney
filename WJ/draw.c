@@ -7,8 +7,6 @@ Texture2D backgroundraiz;
 Texture2D background2;
 Texture2D background3;
 Texture2D background4;
-Texture2D background5;
-Texture2D background6;
 Texture2D player;
 Texture2D enemy;
 Texture2D enemy2;
@@ -25,8 +23,6 @@ void InitAssets(void) {
     background2 = LoadTexture("assets/background2.png");
     background3 = LoadTexture("assets/background3.png");
     background4 = LoadTexture("assets/background4.png");
-    background5 = LoadTexture("assets/background5.png");
-    background6 = LoadTexture("assets/background6.png");
 
     player = LoadTexture("assets/player.png");
 
@@ -50,8 +46,6 @@ void DrawGame(void) {
 	DrawTexture(background2, 0, 0, WHITE);
 	DrawTexture(background3, 0, 0, WHITE);
 	DrawTexture(background4, 0, 0, WHITE);
-	DrawTexture(background5, 0, 0, WHITE);
-	DrawTexture(background6, 0, 0, WHITE);
 	DrawTexture(backgroundleaderboard, 0, 0, WHITE);
     DrawTexture(player, 100, 100, WHITE);
     DrawTexture(enemy, 300, 100, WHITE);
@@ -71,8 +65,6 @@ void UnloadAssets(void) {
     UnloadTexture(background2);
     UnloadTexture(background3);
     UnloadTexture(background4);
-    UnloadTexture(background5);
-    UnloadTexture(background6);
 
     UnloadTexture(player);
 
