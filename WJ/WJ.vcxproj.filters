@@ -13,10 +13,28 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Arquivos de Origem\Game">
+      <UniqueIdentifier>{81564300-695e-4ec0-965c-e9eaa4c42bce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Map">
+      <UniqueIdentifier>{a9f01d07-c2de-4eb5-b4ec-c506a09d37e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Scene">
+      <UniqueIdentifier>{1d054e53-7b34-44ea-9e52-5739bbbd2a8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Utils">
+      <UniqueIdentifier>{bbffe648-e18d-449a-98e0-e30aa0e1b73c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WJ.cpp">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="main.c" />
+    <ClCompile Include="menu.c">
+      <Filter>Arquivos de Origem\Scene</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="menu.h">
+      <Filter>Arquivos de Origem\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
