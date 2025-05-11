@@ -1,6 +1,8 @@
 #ifndef DRAW_H
 #define DRAW_H
 
-int draw(void);
+void InitAssets(void);
+void DrawGame(void);
+void UnloadAssets(void);
 
 #endif
