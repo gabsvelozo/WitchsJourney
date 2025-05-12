@@ -18,24 +18,24 @@ Texture2D enemy6;
 Texture2D backgroundleaderboard;
 
 void InitAssets(void) {
-	backgroundmenu = LoadTexture("assets/backgroundmenu.png");
-	backgroundinstrucoes = LoadTexture("assets/backgroundinstrucoes.png");
-	background1 = LoadTexture("assets/background1.png");
-    backgroundraiz = LoadTexture("assets/backgroundraiz.png");
-    background2 = LoadTexture("assets/background2.png");
-    background3 = LoadTexture("assets/background3.png");
-    background4 = LoadTexture("assets/background4.png");
+	backgroundmenu = LoadTexture("resources/assets/backgroundmenu.png");
+	backgroundinstrucoes = LoadTexture("resources/assets/backgroundinstrucoes.png");
+	background1 = LoadTexture("resources/assets/background1.png");
+    backgroundraiz = LoadTexture("resources/assets/backgroundraiz.png");
+    background2 = LoadTexture("resources/assets/background2.png");
+    background3 = LoadTexture("resources/assets/background3.png");
+    background4 = LoadTexture("resources/assets/background4.png");
 
-    player = LoadTexture("assets/player.png");
+    player = LoadTexture("resources/assets/player.png");
 
-    enemy = LoadTexture("assets/enemy.png");
-    enemy2 = LoadTexture("assets/enemy2.png");
-    enemy3 = LoadTexture("assets/enemy3.png");
-    enemy4 = LoadTexture("assets/enemy4.png");
-    enemy5 = LoadTexture("assets/enemy5.png");
-    enemy6 = LoadTexture("assets/enemy6.png");
+    enemy = LoadTexture("resources/assets/enemy.png");
+    enemy2 = LoadTexture("resources/assets/enemy2.png");
+    enemy3 = LoadTexture("resources/assets/enemy3.png");
+    enemy4 = LoadTexture("resources/assets/enemy4.png");
+    enemy5 = LoadTexture("resources/assets/enemy5.png");
+    enemy6 = LoadTexture("resources/assets/enemy6.png");
 
-	backgroundleaderboard = LoadTexture("assets/backgroundleaderboard.png");
+	backgroundleaderboard = LoadTexture("resources/assets/backgroundleaderboard.png");
 }
 
 void DrawGame(void) {

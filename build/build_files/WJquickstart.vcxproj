@@ -532,12 +532,15 @@
     <ClInclude Include="..\..\src\draw.h" />
     <ClInclude Include="..\..\src\map1.h" />
     <ClInclude Include="..\..\src\menu.h" />
+    <ClInclude Include="cora.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\draw.c" />
     <ClCompile Include="..\..\src\main.c" />
     <ClCompile Include="..\..\src\map1.c" />
     <ClCompile Include="..\..\src\menu.c" />
+    <ClCompile Include="cora.c" />
+    <ClCompile Include="enemy.c" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="raylib.vcxproj">

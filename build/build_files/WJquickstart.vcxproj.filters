@@ -28,6 +28,9 @@
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{9c8ca1a2-8927-4b2b-962c-c744f8b15491}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{6c250aa7-4b9f-490c-8477-d4cf6742b19d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\resource_dir.h">
@@ -42,6 +45,9 @@
     <ClInclude Include="..\..\src\draw.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="cora.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.c" />
@@ -53,6 +59,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\menu.c">
       <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="cora.c">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.c">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

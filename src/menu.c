@@ -10,8 +10,8 @@ typedef enum {
     EXIT
 } GameState;
 
-const int screenWidth = 1536;
-const int screenHeight = 1024;
+const int screenWidth = 1280;
+const int screenHeight = 720;
 
 int buttons(void);
 int buttonVoltar(void);
@@ -22,7 +22,7 @@ int menu(void)
     SetTargetFPS(60);
 
     GameState state = MENU;
-    int fontSize = 30;
+    float fontSize = screenHeight * 0.04f; // 4% da altura da tela
 
     while (!WindowShouldClose() && state != EXIT)
     {
@@ -31,24 +31,22 @@ int menu(void)
 
         if (state == MENU) {
             const char* title = "Bem-vindo(a) ao The Witch's Journey!";
-            DrawText(title, screenWidth / 2 - MeasureText(title, fontSize) / 2, 100, fontSize, WHITE);
+            float titleY = screenHeight * 0.1f; // 10% da altura
+            DrawText(title, screenWidth / 2 - MeasureText(title, fontSize) / 2, titleY, fontSize, WHITE);
 
             const char* storyLines[] = {
-                "Cora, uma jovem bruxa formada na academia de bruxas,",
-                "procurou seu grande mestre Alfred para melhorar sua magia.",
-                "Ele a envia para uma jornada na qual ela pode",
-                "desenvolver suas habilidades de magia e se tornar a grande",
-                "bruxa que desde pequena ela sonha em ser.",
+                "Cora, uma jovem bruxa formada na academia de bruxas, procurou seu",
+                "grande mestre Alfred para melhorar sua magia. Ele a envia para uma",
+                "jornada na qual ela pode desenvolver suas habilidades de magia e se",
+                "tornar a grande bruxa que desde pequena ela sonha em ser.",
                 "",
-                "O jogador(a) deve guiar Cora em sua",
-                "jornada para enfrentar seus novos desafios.",
-                "Consegue ajudar Cora a se tornar",
-                "a maior bruxa de sua vila?"
+                "O jogador(a) deve guiar Cora em sua jornada para enfrentar seus novos desafios.",
+                "Consegue ajudar Cora a se tornar a maior bruxa de sua vila?"
             };
 
             int numLines = sizeof(storyLines) / sizeof(storyLines[0]);
-            int lineSpacing = 40;
-            int startY = 180;
+            float lineSpacing = screenHeight * 0.05f; // 5% da altura
+            float startY = screenHeight * 0.25f; // 25% da altura
 
             for (int i = 0; i < numLines; i++) {
                 int textWidth = MeasureText(storyLines[i], fontSize);
@@ -78,8 +76,8 @@ int menu(void)
             };
 
             int numLines = sizeof(instructions) / sizeof(instructions[0]);
-            int lineSpacing = 40;
-            int startY = 200;
+            float lineSpacing = screenHeight * 0.05f; // 5% da altura
+            float startY = screenHeight * 0.2f; // 20% da altura
 
             for (int i = 0; i < numLines; i++) {
                 int textWidth = MeasureText(instructions[i], fontSize);
@@ -95,7 +93,7 @@ int menu(void)
 
         if (state == GAME) {
             CloseWindow();
-            map1();  
+            map1();
             return 0;
         }
     }
@@ -105,11 +103,12 @@ int menu(void)
 }
 
 int buttons(void) {
-    const int buttonWidth = 300;
-    const int buttonHeight = 60;
-    const int buttonX = screenWidth / 2 - buttonWidth / 2;
-    const int buttonYStart = 650;
-    const int buttonSpacing = 80;
+    float buttonWidth = screenWidth * 0.25f; // 25% da largura
+    float buttonHeight = screenHeight * 0.08f; // 8% da altura
+    float buttonX = screenWidth / 2 - buttonWidth / 2;
+    float buttonYStart = screenHeight * 0.65f; // 65% da altura
+
+    float buttonSpacing = screenHeight * 0.1f; // 10% da altura
 
     Rectangle buttons[3];
     for (int i = 0; i < 3; i++) {
@@ -117,6 +116,7 @@ int buttons(void) {
     }
 
     const char* labels[] = { "JOGAR", "INSTRUCOES", "SAIR" };
+    float buttonFontSize = screenHeight * 0.04f; // 4% da altura
 
     Vector2 mouse = GetMousePosition();
     for (int i = 0; i < 3; i++) {
@@ -125,9 +125,9 @@ int buttons(void) {
 
         DrawRectangleRec(buttons[i], color);
         DrawText(labels[i],
-            buttonX + buttonWidth / 2 - MeasureText(labels[i], 30) / 2,
-            buttons[i].y + 15,
-            30,
+            buttonX + buttonWidth / 2 - MeasureText(labels[i], buttonFontSize) / 2,
+            buttons[i].y + buttonHeight / 2 - buttonFontSize / 2,
+            buttonFontSize,
             WHITE);
 
         if (hovered && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
@@ -139,10 +139,10 @@ int buttons(void) {
 }
 
 int buttonVoltar(void) {
-    const int buttonWidth = 300;
-    const int buttonHeight = 60;
-    const int buttonX = screenWidth / 2 - buttonWidth / 2;
-    const int buttonY = 650;
+    float buttonWidth = screenWidth * 0.25f; // 25% da largura
+    float buttonHeight = screenHeight * 0.08f; // 8% da altura
+    float buttonX = screenWidth / 2 - buttonWidth / 2;
+    float buttonY = screenHeight * 0.85f; // 85% da altura
 
     Rectangle button = { buttonX, buttonY, buttonWidth, buttonHeight };
     Vector2 mouse = GetMousePosition();
@@ -152,10 +152,11 @@ int buttonVoltar(void) {
     DrawRectangleRec(button, color);
 
     const char* label = "VOLTAR";
+    float buttonFontSize = screenHeight * 0.04f; // 4% da altura
     DrawText(label,
-        buttonX + buttonWidth / 2 - MeasureText(label, 30) / 2,
-        buttonY + 15,
-        30,
+        buttonX + buttonWidth / 2 - MeasureText(label, buttonFontSize) / 2,
+        buttonY + buttonHeight / 2 - buttonFontSize / 2,
+        buttonFontSize,
         WHITE);
 
     if (hovered && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
