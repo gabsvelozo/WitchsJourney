@@ -14,7 +14,7 @@ void map1(void)
     {
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        DrawTexture(backgroundraiz, 0, 0, WHITE);
+        DrawTexture(background1, 0, 0, WHITE);
         EndDrawing();
     }
 

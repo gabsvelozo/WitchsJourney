@@ -6,6 +6,7 @@
 extern Texture2D backgroundmenu;
 extern Texture2D backgroundinstrucoes;
 extern Texture2D backgroundraiz;
+extern Texture2D background1;
 extern Texture2D background2;
 extern Texture2D background3;
 extern Texture2D background4;

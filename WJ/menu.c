@@ -10,8 +10,8 @@ typedef enum {
     EXIT
 } GameState;
 
-const int screenWidth = 1820;
-const int screenHeight = 1000;
+const int screenWidth = 1536;
+const int screenHeight = 1024;
 
 int buttons(void);
 int buttonVoltar(void);

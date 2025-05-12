@@ -4,6 +4,7 @@
 Texture2D backgroundmenu;
 Texture2D backgroundinstrucoes;
 Texture2D backgroundraiz;
+Texture2D background1;
 Texture2D background2;
 Texture2D background3;
 Texture2D background4;
@@ -19,6 +20,7 @@ Texture2D backgroundleaderboard;
 void InitAssets(void) {
 	backgroundmenu = LoadTexture("assets/backgroundmenu.png");
 	backgroundinstrucoes = LoadTexture("assets/backgroundinstrucoes.png");
+	background1 = LoadTexture("assets/background1.png");
     backgroundraiz = LoadTexture("assets/backgroundraiz.png");
     background2 = LoadTexture("assets/background2.png");
     background3 = LoadTexture("assets/background3.png");
