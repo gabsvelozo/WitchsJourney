@@ -4,6 +4,7 @@
 Texture2D backgroundmenu;
 Texture2D backgroundinstrucoes;
 Texture2D backgroundraiz;
+Texture2D background1changed;
 Texture2D background1;
 Texture2D background2;
 Texture2D background3;
@@ -45,6 +46,7 @@ void DrawGame(void) {
 	DrawTexture(backgroundmenu, 0, 0, WHITE);
 	DrawTexture(backgroundinstrucoes, 0, 0, WHITE);
     DrawTexture(backgroundraiz, 0, 0, WHITE);
+	DrawTexture(background1, 0, 0, WHITE);
 	DrawTexture(background2, 0, 0, WHITE);
 	DrawTexture(background3, 0, 0, WHITE);
 	DrawTexture(background4, 0, 0, WHITE);
@@ -64,6 +66,7 @@ void UnloadAssets(void) {
 	UnloadTexture(backgroundmenu);
 	UnloadTexture(backgroundinstrucoes);
     UnloadTexture(backgroundraiz);
+	UnloadTexture(background1);
     UnloadTexture(background2);
     UnloadTexture(background3);
     UnloadTexture(background4);

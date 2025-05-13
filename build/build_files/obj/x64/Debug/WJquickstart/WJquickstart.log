@@ -1,5 +1,7 @@
-﻿  menu.c
-  cora.c
+﻿  draw.c
+  main.c
+  map1.c
+  menu.c
 C:\Users\gabsm\source\repos\WJquickstart\src\menu.c(35,66): warning C4244: 'função': conversão de 'float' para 'int', possível perda de dados
 C:\Users\gabsm\source\repos\WJquickstart\src\menu.c(35,81): warning C4244: 'função': conversão de 'float' para 'int', possível perda de dados
 C:\Users\gabsm\source\repos\WJquickstart\src\menu.c(35,89): warning C4244: 'função': conversão de 'float' para 'int', possível perda de dados
