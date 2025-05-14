@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <raylib.h>
 #include "menu.h"
 #include "map1.h"
@@ -69,9 +69,11 @@ int menu(void)
             const char* instructions[] = {
                 "INSTRUCOES:",
                 "",
-                "Use as setas <- -> para mover Cora.",
-                "Pressione W para atacar.",
-                "Use ESPACO para pular.",
+                "Use D para mover Cora para direita.",
+                "A para mover Cora para esquerda.",
+                "W para mover Cora para cima.",
+                "S para mover Cora para baixo.",
+                "E pressione P para atacar.",
                 "",
             };
 

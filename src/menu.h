@@ -3,5 +3,6 @@
 
 int menu(void);
 int buttons(void);
+int buttonVoltar(void);
 
 #endif
