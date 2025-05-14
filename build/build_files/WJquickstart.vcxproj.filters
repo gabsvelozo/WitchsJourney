@@ -63,8 +63,5 @@
     <ClCompile Include="cora.c">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="enemy.c">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

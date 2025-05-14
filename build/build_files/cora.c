@@ -1,133 +1,99 @@
-#include <stdio.h>
-#include "raylib.h"
 #include "cora.h"
-#include "enemy.h"
-
-typedef struct {
-    int health;
-    Vector2 position;
-    Vector2 speed;
-    bool isJumping;
-    bool facingRight;
-    Texture2D texture;
-    Rectangle hitbox;
-    int damage;
-    bool isActive; 
-} Cora;
-
 
 Cora initCora(void) {
-    Cora cora;
+    Cora cora = { 0 };
     cora.health = 100;
-    cora.position = (Vector2){100, 800}; 
-    cora.speed = (Vector2){5.0f, 0};
-    cora.isJumping = false;
-    cora.texture = LoadTexture("resources/cora.png");
-    cora.facingRight = true;
-    cora.isActive = true;
-    cora.damage = 20;
+    cora.position = (Vector2){ 100, 100 };
+    cora.speed = (Vector2){ 2.5f, 2.5f };
+    cora.direction = DIR_IDLE;
+
+    // Carregando texturas de spritesheet
+    cora.textures[DIR_DOWN] = LoadTexture("resources/assets/baixo.png");
+    cora.textures[DIR_UP] = LoadTexture("resources/assets/cima.png");
+    cora.textures[DIR_LEFT] = LoadTexture("resources/assets/esquerda.png");
+    cora.textures[DIR_RIGHT] = LoadTexture("resources/assets/direita.png");
+    cora.textures[DIR_IDLE] = LoadTexture("resources/assets/idle.png");
+
+    // Definindo quantidade de frames de cada animação
+    cora.frames[DIR_DOWN] = 4;
+    cora.frames[DIR_UP] = 4;
+    cora.frames[DIR_LEFT] = 7;
+    cora.frames[DIR_RIGHT] = 7;
+    cora.frames[DIR_IDLE] = 4;
+
+    // Inicialização do controle de animação
+    cora.frameSpeed = 8;
+    cora.frameCounter = 0;
+    cora.currentFrame = 0;
+
+    // Inicializa o frameRec com base na textura atual
+    int maxFrames = cora.frames[cora.direction];
+    Texture2D current = cora.textures[cora.direction];
+    cora.frameRec = (Rectangle){ 0, 0, (float)(current.width / maxFrames), (float)current.height };
+
     return cora;
 }
 
 void updateCora(Cora* cora) {
-    const float gravity = 0.5f;
-    const float jumpSpeed = -10.0f;
-    const float moveSpeed = 5.0f;
-    const float groundY = 800; 
+    Vector2 input = { 0 };
 
     if (IsKeyDown(KEY_RIGHT)) {
-        cora->position.x += moveSpeed;
-        cora->facingRight = true;
+        input.x += 3;
+        cora->direction = DIR_RIGHT;
     }
     else if (IsKeyDown(KEY_LEFT)) {
-        cora->position.x -= moveSpeed;
-        cora->facingRight = false;
+        input.x -= 3;
+        cora->direction = DIR_LEFT;
+    }
+    else if (IsKeyDown(KEY_UP)) {
+        input.y -= 3;
+        cora->direction = DIR_UP;
+    }
+    else if (IsKeyDown(KEY_DOWN)) {
+        input.y += 3;
+        cora->direction = DIR_DOWN;
+    }
+    else {
+        cora->direction = DIR_IDLE;
     }
 
-    if (!cora->isJumping && IsKeyPressed(KEY_SPACE)) {
-        cora->isJumping = true;
-        cora->speed.y = jumpSpeed;
-    }
+    // Atualiza posição
+    cora->position.x += input.x * cora->speed.x;
+    cora->position.y += input.y * cora->speed.y;
 
-    if (cora->isJumping) {
-        cora->position.y += cora->speed.y;
-        cora->speed.y += gravity;
+    // Atualiza animação
+    cora->frameCounter++;
+    if (cora->frameCounter >= (60 / cora->frameSpeed)) {
+        cora->frameCounter = 0;
+        cora->currentFrame++;
 
-        if (cora->position.y >= groundY) {
-            cora->position.y = groundY;
-            cora->speed.y = 0;
-            cora->isJumping = false;
+        if (cora->currentFrame >= cora->frames[cora->direction]) {
+            cora->currentFrame = 0;
         }
     }
+
+    // Atualiza recorte da animação
+    Texture2D current = cora->textures[cora->direction];
+    int maxFrames = cora->frames[cora->direction];
+    cora->frameRec = (Rectangle){
+        cora->currentFrame * (float)(current.width / maxFrames),
+        0,
+        (float)(current.width / maxFrames),
+        (float)current.height
+    };
 }
 
 void drawCora(Cora* cora) {
-    DrawTextureV(cora->texture, cora->position, WHITE);
+    DrawTextureRec(
+        cora->textures[cora->direction],
+        cora->frameRec,
+        cora->position,
+        WHITE
+    );
 }
 
-// ==============================================================
-
-
-typedef struct {
-    Vector2 position;
-    Vector2 speed;
-    Rectangle hitbox;
-    bool isActive;
-    bool facingRight;
-    int damage;
-} Power;
-
-Power initPower(Cora* cora) {
-    Power power;
-    power.speed = (Vector2){ 10.0f, 0 }; 
-    power.isActive = true;
-    power.facingRight = cora->facingRight;
-    power.damage = cora->damage;
-
-    if (cora->facingRight) {
-        power.position = (Vector2){ cora->position.x + cora->texture.width, cora->position.y + cora->texture.height / 2 };
+void unloadCora(Cora* cora) {
+    for (int i = 0; i < 5; i++) {
+        UnloadTexture(cora->textures[i]);
     }
-    else {
-        power.position = (Vector2){ cora->position.x - 20, cora->position.y + cora->texture.height / 2 };
-    }
-
-    power.hitbox = (Rectangle){ power.position.x, power.position.y, 20, 10 }; 
-
-    return power;
-}
-
-void updatePower(Power* power) {
-    if (!power->isActive) return;
-
-    if (power->facingRight) {
-        power->position.x += power->speed.x;
-    }
-    else {
-        power->position.x -= power->speed.x;
-    }
-
-    power->hitbox.x = power->position.x;
-    power->hitbox.y = power->position.y;
-
-    if (power->position.x < 0 || power->position.x > GetScreenWidth()) {
-        power->isActive = false;
-    }
-}
-
-void drawPower(Power* power) {
-    if (power->isActive) {
-        DrawRectangleRec(power->hitbox, BLUE);
-    }
-}
-
-bool checkPowerCollision(Power* power, Enemy* enemy) {
-    if (!power->isActive || !enemy->isActive) return false;
-
-    if (CheckCollisionRecs(power->hitbox, enemy->hitbox)) {
-        damageEnemy(enemy, power->damage);  // <--- chamada direta
-        power->isActive = false;
-        return true;
-    }
-
-    return false;
 }

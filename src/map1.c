@@ -1,23 +1,28 @@
-#include <raylib.h>
-#include "draw.h"
+#include "raylib.h"
+#include "cora.h"
 
 extern const int screenWidth;
 extern const int screenHeight;
 
-void map1(void)
-{
+void map1(void) {
     InitWindow(screenWidth, screenHeight, "Mapa 1");
-    InitAssets();
-
+    InitAudioDevice(); // se usar sons
     SetTargetFPS(60);
-    while (!WindowShouldClose())
-    {
+
+    Texture2D background1 = LoadTexture("resources/assets/background1.png");
+
+    Cora cora = initCora();
+
+    while (!WindowShouldClose()) {
+        updateCora(&cora);
+
         BeginDrawing();
-        ClearBackground(RAYWHITE);
         DrawTexture(background1, 0, 0, WHITE);
+        drawCora(&cora);
         EndDrawing();
     }
 
-    UnloadAssets();
+    unloadCora(&cora);
+    UnloadTexture(background1);
     CloseWindow();
 }

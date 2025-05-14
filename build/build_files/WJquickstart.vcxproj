@@ -540,7 +540,6 @@
     <ClCompile Include="..\..\src\map1.c" />
     <ClCompile Include="..\..\src\menu.c" />
     <ClCompile Include="cora.c" />
-    <ClCompile Include="enemy.c" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="raylib.vcxproj">
