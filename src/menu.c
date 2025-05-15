@@ -62,8 +62,11 @@ int menu(void)
             const char* instructions[] = {
                 "INSTRUCOES:",
                 "",
-                "Use as teclas WASD ou as setas do teclado para mover Cora.",
-                "Pressione T para atacar.",
+                "Use D para mover Cora para direita.",
+                "A para mover Cora para esquerda.",
+                "W para mover Cora para cima.",
+                "S para mover Cora para baixo.",
+                "e pressione P para atacar.",
                 "",
             };
 
