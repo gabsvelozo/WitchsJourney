@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  menu.c
 C:\Users\gabsm\source\repos\WJ\WJ\menu.c(116,35): warning C4244: 'inicializando': conversão de 'const int' para 'float', possível perda de dados
 C:\Users\gabsm\source\repos\WJ\WJ\menu.c(116,57): warning C4244: 'inicializando': conversão de 'const int' para 'float', possível perda de dados
@@ -9,3 +10,6 @@ C:\Users\gabsm\source\repos\WJ\WJ\menu.c(147,35): warning C4244: 'inicializando'
 C:\Users\gabsm\source\repos\WJ\WJ\menu.c(147,44): warning C4244: 'inicializando': conversão de 'const int' para 'float', possível perda de dados
 C:\Users\gabsm\source\repos\WJ\WJ\menu.c(147,57): warning C4244: 'inicializando': conversão de 'const int' para 'float', possível perda de dados
   WJ.vcxproj -> C:\Users\gabsm\source\repos\WJ\x64\Debug\WJ.exe
+=======
+﻿C:\Users\gabsm\source\repos\WitchsJourney\WJ\WJ.vcxproj : error MSB4025: Não foi possível carregar o arquivo de projeto. Não foi possível localizar o arquivo 'C:\Users\gabsm\source\repos\WitchsJourney\WJ\WJ.vcxproj'.
+>>>>>>> jarbas
