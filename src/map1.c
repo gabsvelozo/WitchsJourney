@@ -14,15 +14,27 @@ void map1(void) {
     Cora cora = initCora();
 
     while (!WindowShouldClose()) {
+        float delta = GetFrameTime();
         updateCora(&cora);
+        updateMagics(delta);
+
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+            shootNormalMagic(&cora);
+        }
+
+        if (IsKeyPressed(MOUSE_RIGHT_BUTTON)) {
+            shootSpecialMagic(&cora);
+        }
 
         BeginDrawing();
-        DrawTexture(background1, 0, 0, WHITE);
-        drawCora(&cora);
+            DrawTexture(background1, 0, 0, WHITE);
+            drawCora(&cora);
+            drawMagics();
         EndDrawing();
     }
 
     unloadCora(&cora);
     UnloadTexture(background1);
+    unloadMagics();
     CloseWindow();
 }

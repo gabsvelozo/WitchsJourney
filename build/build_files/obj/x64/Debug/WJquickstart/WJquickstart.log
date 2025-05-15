@@ -1,2 +1,7 @@
-﻿  cora.c
-  WJquickstart.vcxproj -> C:\Users\Jarbas\Desktop\de-felipe\WitchsJourney-felipe-teste\WitchsJourney-felipe-teste\bin\Debug\WJquickstart.exe
+﻿  map1.c
+C:\Users\felip\projetos\WitchsJourney\src\map1.c(19,9): warning C4013: 'updateMagics' indefinido; assumindo extern retornando int
+C:\Users\felip\projetos\WitchsJourney\src\map1.c(22,13): warning C4013: 'shootNormalMagic' indefinido; assumindo extern retornando int
+C:\Users\felip\projetos\WitchsJourney\src\map1.c(26,13): warning C4013: 'shootSpecialMagic' indefinido; assumindo extern retornando int
+C:\Users\felip\projetos\WitchsJourney\src\map1.c(32,13): warning C4013: 'drawMagics' indefinido; assumindo extern retornando int
+C:\Users\felip\projetos\WitchsJourney\src\map1.c(38,5): warning C4013: 'unloadMagics' indefinido; assumindo extern retornando int
+  WJquickstart.vcxproj -> C:\Users\felip\projetos\WitchsJourney\bin\Debug\WJquickstart.exe

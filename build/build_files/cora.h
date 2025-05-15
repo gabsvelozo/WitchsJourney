@@ -1,5 +1,6 @@
 #ifndef CORA_H
 #define CORA_H
+#define MAX_MAGIC_FRAMES 60
 
 #include "raylib.h"
 
@@ -16,13 +17,24 @@ typedef struct {
     Vector2 position;
     Vector2 speed;
     Texture2D textures[5];     // [DOWN, UP, LEFT, RIGHT, IDLE]
-    int frames[5];             // número de frames por direção
+    int frames[5];             // nï¿½mero de frames por direï¿½ï¿½o
     int currentFrame;
     int frameCounter;
     int frameSpeed;
     Rectangle frameRec;
     Direction direction;
 } Cora;
+
+typedef struct {
+    Vector2 position;
+    Vector2 velocity;
+    bool active;
+    Texture2D frames[MAX_MAGIC_FRAMES];
+    int currentFrame;
+    int maxFrames;
+    int frameCounter;
+    int frameSpeed;
+} Magic;
 
 Cora initCora(void);
 void updateCora(Cora* cora);
