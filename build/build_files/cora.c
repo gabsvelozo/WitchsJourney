@@ -37,19 +37,19 @@ Cora initCora(void) {
 void updateCora(Cora* cora) {
     Vector2 input = { 0 };
 
-    if (IsKeyDown(KEY_RIGHT)) {
+    if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) {
         input.x += 3;
         cora->direction = DIR_RIGHT;
     }
-    else if (IsKeyDown(KEY_LEFT)) {
+    else if (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A)) {
         input.x -= 3;
         cora->direction = DIR_LEFT;
     }
-    else if (IsKeyDown(KEY_UP)) {
+    else if (IsKeyDown(KEY_UP) || IsKeyDown(KEY_W)) {
         input.y -= 3;
         cora->direction = DIR_UP;
     }
-    else if (IsKeyDown(KEY_DOWN)) {
+    else if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S)) {
         input.y += 3;
         cora->direction = DIR_DOWN;
     }

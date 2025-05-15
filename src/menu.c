@@ -3,13 +3,6 @@
 #include "menu.h"
 #include "map1.h"
 
-typedef enum {
-    MENU,
-    GAME,
-    INSTRUCOES,
-    EXIT
-} GameState;
-
 const int screenWidth = 1280;
 const int screenHeight = 720;
 
@@ -69,9 +62,8 @@ int menu(void)
             const char* instructions[] = {
                 "INSTRUCOES:",
                 "",
-                "Use as setas <- -> para mover Cora.",
-                "Pressione W para atacar.",
-                "Use ESPACO para pular.",
+                "Use as teclas WASD ou as setas do teclado para mover Cora.",
+                "Pressione T para atacar.",
                 "",
             };
 
