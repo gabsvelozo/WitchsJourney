@@ -1,15 +1,5 @@
-<<<<<<< HEAD
-﻿  menu.c
-C:\Users\gabsm\source\repos\WJ\WJ\menu.c(116,35): warning C4244: 'inicializando': conversão de 'const int' para 'float', possível perda de dados
-C:\Users\gabsm\source\repos\WJ\WJ\menu.c(116,57): warning C4244: 'inicializando': conversão de 'const int' para 'float', possível perda de dados
-C:\Users\gabsm\source\repos\WJ\WJ\menu.c(116,78): warning C4244: 'inicializando': conversão de 'const int' para 'float', possível perda de dados
-C:\Users\gabsm\source\repos\WJ\WJ\menu.c(116,91): warning C4244: 'inicializando': conversão de 'const int' para 'float', possível perda de dados
-C:\Users\gabsm\source\repos\WJ\WJ\menu.c(129,26): warning C4244: 'função': conversão de 'float' para 'int', possível perda de dados
-C:\Users\gabsm\source\repos\WJ\WJ\menu.c(147,26): warning C4244: 'inicializando': conversão de 'const int' para 'float', possível perda de dados
-C:\Users\gabsm\source\repos\WJ\WJ\menu.c(147,35): warning C4244: 'inicializando': conversão de 'const int' para 'float', possível perda de dados
-C:\Users\gabsm\source\repos\WJ\WJ\menu.c(147,44): warning C4244: 'inicializando': conversão de 'const int' para 'float', possível perda de dados
-C:\Users\gabsm\source\repos\WJ\WJ\menu.c(147,57): warning C4244: 'inicializando': conversão de 'const int' para 'float', possível perda de dados
-  WJ.vcxproj -> C:\Users\gabsm\source\repos\WJ\x64\Debug\WJ.exe
-=======
-﻿C:\Users\gabsm\source\repos\WitchsJourney\WJ\WJ.vcxproj : error MSB4025: Não foi possível carregar o arquivo de projeto. Não foi possível localizar o arquivo 'C:\Users\gabsm\source\repos\WitchsJourney\WJ\WJ.vcxproj'.
->>>>>>> jarbas
+﻿  draw.c
+C:\Users\Jarbas\Desktop\testandojogodeAED\WitchsJourney\WJ\draw.c(1,10): error C1083: Não é possível abrir arquivo incluir: 'raylib.h': No such file or directory
+  menu.c
+C:\Users\Jarbas\Desktop\testandojogodeAED\WitchsJourney\WJ\menu.c(2,10): error C1083: Não é possível abrir arquivo incluir: 'raylib.h': No such file or directory
+  Gerando Código...

@@ -45,7 +45,16 @@
     <ClInclude Include="..\..\src\draw.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="cora.h">
+    <ClInclude Include="..\..\src\enemy.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cora.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tools.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\projetil.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
@@ -60,7 +69,16 @@
     <ClCompile Include="..\..\src\menu.c">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="cora.c">
+    <ClCompile Include="..\..\src\enemy.c">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cora.c">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\projetil.c">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tools.c">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,27 +1,29 @@
 #include "cora.h"
+#include "enemy.h"
 
 Cora initCora(void) {
     Cora cora = { 0 };
+    cora.isAlive = true;
     cora.health = 100;
-    cora.position = (Vector2){100, 100};
-    cora.speed = (Vector2){2.5f, 2.5f};
+    cora.position = (Vector2){ 640, 360 };
+    cora.speed = (Vector2){ 2.5f, 2.5f };
     cora.direction = DIR_IDLE;
 
     // Carregando texturas de spritesheet
-    cora.textures[DIR_DOWN]  = LoadTexture("resources/cora_down.png");
-    cora.textures[DIR_UP]    = LoadTexture("resources/cora_up.png");
-    cora.textures[DIR_LEFT]  = LoadTexture("resources/cora_left.png");
-    cora.textures[DIR_RIGHT] = LoadTexture("resources/cora_right.png");
-    cora.textures[DIR_IDLE]  = LoadTexture("resources/player.png");
+    cora.textures[DIR_DOWN] = LoadTexture("resources/assets/baixo.png");
+    cora.textures[DIR_UP] = LoadTexture("resources/assets/cima.png");
+    cora.textures[DIR_LEFT] = LoadTexture("resources/assets/esquerda.png");
+    cora.textures[DIR_RIGHT] = LoadTexture("resources/assets/direita.png");
+    cora.textures[DIR_IDLE] = LoadTexture("resources/assets/idle.png");
 
-    // Definindo quantidade de frames de cada animaÃ§Ã£o
-    cora.frames[DIR_DOWN]  = 4;
-    cora.frames[DIR_UP]    = 4;
-    cora.frames[DIR_LEFT]  = 6;
-    cora.frames[DIR_RIGHT] = 6;
-    cora.frames[DIR_IDLE]  = 2;
+    // Definindo quantidade de frames de cada animação
+    cora.frames[DIR_DOWN] = 4;
+    cora.frames[DIR_UP] = 4;
+    cora.frames[DIR_LEFT] = 7;
+    cora.frames[DIR_RIGHT] = 7;
+    cora.frames[DIR_IDLE] = 4;
 
-    // InicializaÃ§Ã£o do controle de animaÃ§Ã£o
+    // Inicialização do controle de animação
     cora.frameSpeed = 8;
     cora.frameCounter = 0;
     cora.currentFrame = 0;
@@ -31,33 +33,45 @@ Cora initCora(void) {
     Texture2D current = cora.textures[cora.direction];
     cora.frameRec = (Rectangle){ 0, 0, (float)(current.width / maxFrames), (float)current.height };
 
+    // Define hitbox com base no tamanho do primeiro sprite carregado
+    cora.hitbox = (Rectangle){
+        cora.position.x,
+        cora.position.y,
+        cora.frameRec.width,
+        cora.frameRec.height
+    };
+
     return cora;
 }
 
-void updateCora(Cora *cora) {
+void updateCora(Cora* cora) {
     Vector2 input = { 0 };
 
-    if (IsKeyDown(KEY_RIGHT)) {
-        input.x += 1;
+    if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) {
+        input.x += 3;
         cora->direction = DIR_RIGHT;
-    } else if (IsKeyDown(KEY_LEFT)) {
-        input.x -= 1;
+    }
+    else if (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A)) {
+        input.x -= 3;
         cora->direction = DIR_LEFT;
-    } else if (IsKeyDown(KEY_UP)) {
-        input.y -= 1;
+    }
+    else if (IsKeyDown(KEY_UP) || IsKeyDown(KEY_W)) {
+        input.y -= 3;
         cora->direction = DIR_UP;
-    } else if (IsKeyDown(KEY_DOWN)) {
-        input.y += 1;
+    }
+    else if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S)) {
+        input.y += 3;
         cora->direction = DIR_DOWN;
-    } else {
+    }
+    else {
         cora->direction = DIR_IDLE;
     }
 
-    // Atualiza posiÃ§Ã£o
+    // Atualiza posição
     cora->position.x += input.x * cora->speed.x;
     cora->position.y += input.y * cora->speed.y;
 
-    // Atualiza animaÃ§Ã£o
+    // Atualiza animação
     cora->frameCounter++;
     if (cora->frameCounter >= (60 / cora->frameSpeed)) {
         cora->frameCounter = 0;
@@ -68,7 +82,7 @@ void updateCora(Cora *cora) {
         }
     }
 
-    // Atualiza recorte da animaÃ§Ã£o
+    // Atualiza recorte da animação
     Texture2D current = cora->textures[cora->direction];
     int maxFrames = cora->frames[cora->direction];
     cora->frameRec = (Rectangle){
@@ -77,19 +91,52 @@ void updateCora(Cora *cora) {
         (float)(current.width / maxFrames),
         (float)current.height
     };
+
+    // Atualiza hitbox com a nova posição
+     cora->hitbox = (Rectangle){
+     cora->position.x + 30,
+     cora->position.y,
+     cora->frameRec.width - 60,
+     cora->frameRec.height
+    };
 }
 
-void drawCora(Cora *cora) {
+void drawCora(Cora* cora) {
     DrawTextureRec(
         cora->textures[cora->direction],
         cora->frameRec,
         cora->position,
         WHITE
     );
+
+    DrawText(TextFormat("HP: %d", cora->health), cora->position.x, cora->position.y - 20, 20, RED);
 }
 
-void unloadCora(Cora *cora) {
+void unloadCora(Cora* cora) {
     for (int i = 0; i < 5; i++) {
         UnloadTexture(cora->textures[i]);
+    }
+}
+
+void checkCoraCollision(Cora* cora, Enemy* enemies, int enemyCount) {
+    if (!cora->isAlive) return;
+
+    for (int i = 0; i < enemyCount; i++) {
+        if (enemies[i].active) {
+            Rectangle enemyHitbox = {
+                enemies[i].position.x,
+                enemies[i].position.y,
+                enemies[i].frameRec.width * enemies[i].scale,
+                enemies[i].frameRec.height * enemies[i].scale
+            };
+
+            if (CheckCollisionRecs(cora->hitbox, enemyHitbox)) {
+                cora->health -= 10;
+                enemies[i].active = false; // opcional: "desativa" o inimigo que bateu
+                if (cora->health <= 0) {
+                    cora->isAlive = false;
+                }
+            }
+        }
     }
 }

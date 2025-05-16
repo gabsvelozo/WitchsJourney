@@ -269,6 +269,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -529,17 +530,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\resource_dir.h" />
+    <ClInclude Include="..\..\src\cora.h" />
     <ClInclude Include="..\..\src\draw.h" />
+    <ClInclude Include="..\..\src\enemy.h" />
     <ClInclude Include="..\..\src\map1.h" />
     <ClInclude Include="..\..\src\menu.h" />
-    <ClInclude Include="cora.h" />
+    <ClInclude Include="..\..\src\projetil.h" />
+    <ClInclude Include="..\..\src\tools.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\cora.c" />
     <ClCompile Include="..\..\src\draw.c" />
+    <ClCompile Include="..\..\src\enemy.c" />
     <ClCompile Include="..\..\src\main.c" />
     <ClCompile Include="..\..\src\map1.c" />
     <ClCompile Include="..\..\src\menu.c" />
-    <ClCompile Include="cora.c" />
+    <ClCompile Include="..\..\src\projetil.c" />
+    <ClCompile Include="..\..\src\tools.c" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="raylib.vcxproj">

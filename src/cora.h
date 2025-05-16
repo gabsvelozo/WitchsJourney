@@ -2,6 +2,7 @@
 #define CORA_H
 
 #include "raylib.h"
+#include <stdbool.h>
 
 typedef enum {
     DIR_DOWN,
@@ -16,17 +17,19 @@ typedef struct {
     Vector2 position;
     Vector2 speed;
     Texture2D textures[5];     // [DOWN, UP, LEFT, RIGHT, IDLE]
-    int frames[5];             // nÃºmero de frames por direÃ§Ã£o
+    int frames[5];             // número de frames por direção
     int currentFrame;
     int frameCounter;
     int frameSpeed;
     Rectangle frameRec;
     Direction direction;
+    Rectangle hitbox; // hitbox
+    bool isAlive;
 } Cora;
 
 Cora initCora(void);
-void updateCora(Cora *cora);
-void drawCora(Cora *cora);
-void unloadCora(Cora *cora);
+void updateCora(Cora* cora);
+void drawCora(Cora* cora);
+void unloadCora(Cora* cora);
 
 #endif
