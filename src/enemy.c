@@ -67,10 +67,10 @@ void UpdateEnemy(Enemy* enemy, Vector2 targetPosition) {
 
     // att hitbox
     enemy->hitbox = (Rectangle){
-    enemy->position.x,
-    enemy->position.y,
-    enemy->frameRec.width * enemy->scale,
-    enemy->frameRec.height * enemy->scale
+    enemy->position.x + 48,
+    enemy->position.y + 65,
+    enemy->frameRec.width - 15,
+    enemy->frameRec.height,
     };
 
 }

@@ -4,6 +4,12 @@
 #include "raylib.h"
 #include <stdbool.h>
 
+typedef struct type {
+    int valor; // valor indo de 1 a 4 e compondo os tipos dos ataques, 1 = Água; 2 = Terra; 3 = Vento; 4 = Fogo;
+    struct type *prox;
+    struct type* ant;
+}type;
+
 typedef enum {
     ENEMY_DOWN,
     ENEMY_UP,
@@ -24,6 +30,7 @@ typedef struct Enemy {
     float scale;
     int health;
     Rectangle hitbox;
+
 } Enemy;
 
 void InitEnemy(Enemy* enemy);

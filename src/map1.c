@@ -20,8 +20,8 @@ void map1(void) {
     
 
     // Cria o projétil e deixa inativo
-    Projectile projectile;
-    InitProjectile(&projectile, magicTex);
+    Projectile projectileW;
+    InitProjectile(&projectileW, magicTex);
 
     #define MAX_ENEMIES 10
 
@@ -57,14 +57,14 @@ void map1(void) {
             }
         }        
 
-        if (projectile.active) {
+        if (projectileW.active) {
             for (int i = 0; i < MAX_ENEMIES; i++) {
                 if (enemies[i].active &&
-                    CheckCollisionCircleRec(projectile.position, projectile.frameRec.width * projectile.scale * 0.5f,
+                    CheckCollisionCircleRec(projectileW.position, projectileW.frameRec.width * projectileW.scale * 0.5f,
                         enemies[i].hitbox)) {
 
                     enemies[i].health -= 1;  // dano
-                    projectile.active = false;
+                    projectileW.active = false;
 
                     if (enemies[i].health <= 0) {
                         enemies[i].active = false;
@@ -76,17 +76,17 @@ void map1(void) {
 
         // Dispara quando clicar com o botão esquerdo do mouse
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && cora.isAlive) {
-            ShootProjectile(&projectile, &cora);
+            ShootProjectile(&projectileW, &cora);
         }
 
         // Atualiza a posição do projétil (mesmo se inativo faz nada)
-        UpdateProjectile(&projectile);
+        UpdateProjectile(&projectileW);
 
         BeginDrawing();
         DrawTexture(background1, 0, 0, WHITE);
         drawCora(&cora);
 
-        DrawProjectile(&projectile);
+        DrawProjectile(&projectileW);
 
         // Desenhar cada inimigo
         for (int i = 0; i < MAX_ENEMIES; i++) {

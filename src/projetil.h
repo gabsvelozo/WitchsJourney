@@ -3,7 +3,13 @@
 
 #include "raylib.h"
 #include <stdbool.h>
-#include "cora.h" // se necessário para acesso à posição da Cora
+#include "cora.h"
+
+typedef struct type {
+    int valor; // valor indo de 1 a 4 e compondo os tipos dos ataques, 1 = Água; 2 = Terra; 3 = Vento; 4 = Fogo;
+    struct type* prox;
+    struct type* ant;
+}type;
 
 typedef struct Projectile {
     Vector2 position;
