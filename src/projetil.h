@@ -5,11 +5,11 @@
 #include <stdbool.h>
 #include "cora.h"
 
-/* typedef struct type {
+typedef struct Node {
     int valor; // valor indo de 1 a 4 e compondo os tipos dos ataques, 1 = Água; 2 = Terra; 3 = Vento; 4 = Fogo;
-    struct type* prox;
-    struct type* ant;
-} type;                                  -> tá dando erro na definição struct */
+    struct Node* prox;
+    struct Node* ant;
+} Node;                                 
 
 typedef struct Projectile {
     Vector2 position;

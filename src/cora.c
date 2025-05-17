@@ -49,6 +49,18 @@ Cora initCora(void) {
 void updateCora(Cora* cora) {
     Vector2 input = { 0 };
 
+    // limites do mapa
+    const float minX = 0.0f;
+    const float minY = 0.0f;
+    const float maxX = 1280.0f - cora->frameRec.width;   // largura da janela – largura do sprite
+    const float maxY = 720.0f  - cora->frameRec.height;  // altura  da janela – altura  do sprite
+
+	// Verifica se Cora está dentro dos limites do mapa
+    if (cora->position.x < minX) cora->position.x = minX;
+    if (cora->position.x > maxX) cora->position.x = maxX;
+    if (cora->position.y < minY) cora->position.y = minY;
+    if (cora->position.y > maxY) cora->position.y = maxY;
+
 	// verifica se Cora tá viva
     if (!cora->isAlive) {
         // se não estiver, reproduz os frames da morte
