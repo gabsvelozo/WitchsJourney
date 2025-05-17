@@ -41,7 +41,7 @@ void map1(void) {
 
         // Atualize inimigos e faça a colisão AQUI, dentro do loop while
         for (int i = 0; i < MAX_ENEMIES; i++) {
-            UpdateEnemy(&enemies[i], cora.position);
+            UpdateEnemy(&enemies[i], cora.position, cora.isAlive);
 
             // Atualiza a hitbox do inimigo dentro do UpdateEnemy (já deve estar feito)
 
@@ -107,7 +107,7 @@ void map1(void) {
         DrawText(TextFormat("Vida: %d", cora.health), 10, 10, 20, RED);
 
         if (!cora.isAlive) {
-            DrawText("Você morreu!", screenWidth / 2 - 80, screenHeight / 2, 30, RED);
+            DrawText("Voce morreu!", screenWidth / 2 - 80, screenHeight / 2, 30, RED);
         }
 
         EndDrawing();

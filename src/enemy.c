@@ -34,8 +34,9 @@ void InitEnemy(Enemy* enemy) {
     enemy->active = true;
 }
 
-void UpdateEnemy(Enemy* enemy, Vector2 targetPosition) {
+void UpdateEnemy(Enemy* enemy, Vector2 targetPosition, bool coraAlive) {
     if (!enemy->active) return;
+	if (!coraAlive) return;
 
     // Movimento em direção à Cora
     Vector2 direction = {

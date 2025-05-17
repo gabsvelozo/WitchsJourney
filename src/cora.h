@@ -9,15 +9,16 @@ typedef enum {
     DIR_UP,
     DIR_LEFT,
     DIR_RIGHT,
-    DIR_IDLE
+    DIR_IDLE,
+    DIR_DYING
 } Direction;
 
 typedef struct {
     int health;
     Vector2 position;
     Vector2 speed;
-    Texture2D textures[5];     // [DOWN, UP, LEFT, RIGHT, IDLE]
-    int frames[5];             // número de frames por direção
+    Texture2D textures[6];     // [DOWN, UP, LEFT, RIGHT, IDLE]
+    int frames[6];             // número de frames por direção
     int currentFrame;
     int frameCounter;
     int frameSpeed;

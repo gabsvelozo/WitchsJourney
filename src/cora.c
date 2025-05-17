@@ -15,6 +15,7 @@ Cora initCora(void) {
     cora.textures[DIR_LEFT] = LoadTexture("resources/assets/esquerda.png");
     cora.textures[DIR_RIGHT] = LoadTexture("resources/assets/direita.png");
     cora.textures[DIR_IDLE] = LoadTexture("resources/assets/idle.png");
+	cora.textures[DIR_DYING] = LoadTexture("resources/assets/Dying_KG_1.png");
 
     // Definindo quantidade de frames de cada animação
     cora.frames[DIR_DOWN] = 4;
@@ -22,6 +23,7 @@ Cora initCora(void) {
     cora.frames[DIR_LEFT] = 7;
     cora.frames[DIR_RIGHT] = 7;
     cora.frames[DIR_IDLE] = 4;
+	cora.frames[DIR_DYING] = 5;
 
     // Inicialização do controle de animação
     cora.frameSpeed = 8;
@@ -46,6 +48,33 @@ Cora initCora(void) {
 
 void updateCora(Cora* cora) {
     Vector2 input = { 0 };
+
+	// verifica se Cora tá viva
+    if (!cora->isAlive) {
+        // se não estiver, reproduz os frames da morte
+        cora->frameCounter++;
+        if (cora->frameCounter >= (60 / cora->frameSpeed)) {
+            cora->frameCounter = 0;
+            cora->currentFrame++;
+
+            if (cora->currentFrame >= cora->frames[DIR_DYING]) {
+                cora->currentFrame = cora->frames[DIR_DYING] - 1; // Para no último frame
+            }
+        }
+
+        Texture2D dyingTexture = cora->textures[DIR_DYING];
+        int maxFrames = cora->frames[DIR_DYING];
+
+        cora->frameRec = (Rectangle){
+            cora->currentFrame * (float)(dyingTexture.width / maxFrames),
+            0,
+            (float)(dyingTexture.width / maxFrames),
+            (float)dyingTexture.height
+        };
+
+        return; // ?? Não atualiza posição nem hitbox se estiver morta
+    }
+
 
     if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) {
         input.x += 3;
@@ -102,12 +131,23 @@ void updateCora(Cora* cora) {
 }
 
 void drawCora(Cora* cora) {
+    Texture2D textureToDraw;
+
+    // visualização da Cora dependendo do estado dela, entrando no else se health chegar a 0, e textura indo pra a de dying
+    if (cora->isAlive) {
+        textureToDraw = cora->textures[cora->direction];
+    }
+    else {
+        textureToDraw = cora->textures[DIR_DYING];
+    }
+
     DrawTextureRec(
-        cora->textures[cora->direction],
+        textureToDraw,
         cora->frameRec,
         cora->position,
         WHITE
     );
+
 
     DrawText(TextFormat("HP: %d", cora->health), cora->position.x, cora->position.y - 20, 20, RED);
 }

@@ -1,10 +1,4 @@
-﻿  main.c
-  map1.c
-C:\Users\Jarbas\Desktop\testandojogodeAED\WitchsJourney\src\projetil.h(8,16): error C2011: 'type': redefinição do tipo 'struct'
-  (compilando o arquivo fonte '../../src/map1.c')
-      C:\Users\Jarbas\Desktop\testandojogodeAED\WitchsJourney\src\enemy.h(7,16):
-      consulte a declaração de 'type'
-  
-C:\Users\Jarbas\Desktop\testandojogodeAED\WitchsJourney\src\map1.c(97,43): warning C4244: 'função': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Jarbas\Desktop\testandojogodeAED\WitchsJourney\src\map1.c(98,43): warning C4244: 'função': conversão de 'float' para 'int', possível perda de dados
-  Gerando Código...
+﻿  map1.c
+C:\Users\gabsm\source\repos\WitchsJourney\src\map1.c(97,43): warning C4244: 'função': conversão de 'float' para 'int', possível perda de dados
+C:\Users\gabsm\source\repos\WitchsJourney\src\map1.c(98,43): warning C4244: 'função': conversão de 'float' para 'int', possível perda de dados
+  WJquickstart.vcxproj -> C:\Users\gabsm\source\repos\WitchsJourney\bin\Debug\WJquickstart.exe

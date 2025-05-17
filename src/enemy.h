@@ -34,7 +34,7 @@ typedef struct Enemy {
 } Enemy;
 
 void InitEnemy(Enemy* enemy);
-void UpdateEnemy(Enemy* enemy, Vector2 targetPosition);
+void UpdateEnemy(Enemy* enemy, Vector2 targetPosition, bool coraAlive);
 void DrawEnemy(Enemy* enemy);
 void UnloadEnemy(Enemy* enemy);
 
