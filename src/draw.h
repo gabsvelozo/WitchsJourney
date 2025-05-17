@@ -19,6 +19,8 @@ extern Texture2D enemy5;
 extern Texture2D enemy6;
 extern Texture2D backgroundleaderboard;
 
+extern CoraAnimations coraAnims;
+
 void InitAssets(void);
 void UnloadAssets(void);
 void DrawGame(void);

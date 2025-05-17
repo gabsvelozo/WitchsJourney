@@ -3,6 +3,7 @@
 #include "enemy.h"
 #include "tools.h"
 #include "projetil.h"
+#include "draw.h"
 
 extern const int screenWidth;
 extern const int screenHeight;
@@ -10,13 +11,16 @@ extern const int screenHeight;
 
 void map1(void) {
     bool showHitboxes = false;
+
     InitWindow(screenWidth, screenHeight, "Mapa 1");
     InitAudioDevice(); // se usar sons
     SetTargetFPS(60);
 
-    Texture2D background1 = LoadTexture("resources/assets/background1.png");
+    InitAssets(); // carrega background1 e coraAnims
+
+    //Texture2D background1 = LoadTexture("resources/assets/background1.png");
     Texture2D magicTex = LoadTexture("resources/assets/projetil.png");
-    Cora cora = initCora();
+    Cora cora = initCora(coraAnims);
     
 
     // Cria o projétil e deixa inativo
@@ -85,7 +89,6 @@ void map1(void) {
         BeginDrawing();
         DrawTexture(background1, 0, 0, WHITE);
         drawCora(&cora);
-
         DrawProjectile(&projectileW);
 
         // Desenhar cada inimigo
@@ -104,10 +107,12 @@ void map1(void) {
         DrawDebugHitboxes(&cora, enemies, MAX_ENEMIES, showHitboxes);
 
         // *** Aqui que você coloca a exibição da vida e da mensagem ***
+        DrawDebugHitboxes(&cora, enemies, MAX_ENEMIES, showHitboxes);
         DrawText(TextFormat("Vida: %d", cora.health), 10, 10, 20, RED);
 
+
         if (!cora.isAlive) {
-            DrawText("Você morreu!", screenWidth / 2 - 80, screenHeight / 2, 30, RED);
+            DrawText("Cora morreu!", screenWidth / 2 - 80, screenHeight / 2, 30, RED);
         }
 
         EndDrawing();
@@ -120,6 +125,6 @@ void map1(void) {
         UnloadEnemy(&enemies[i]);
     }
     UnloadTexture(magicTex);
-    UnloadTexture(background1);
+    //UnloadTexture(background1);
     CloseWindow();
 }
