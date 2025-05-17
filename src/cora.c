@@ -161,7 +161,7 @@ void drawCora(Cora* cora) {
     );
 
 
-    DrawText(TextFormat("HP: %d", cora->health), cora->position.x, cora->position.y - 20, 20, RED);
+    DrawText(TextFormat("HP: %d", cora->health), cora->position.x, cora->position.y - 20, 20, WHITE);
 }
 
 void unloadCora(Cora* cora) {

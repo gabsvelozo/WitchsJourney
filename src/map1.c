@@ -97,17 +97,17 @@ void map1(void) {
                     enemies[i].position.x + 75,
                     enemies[i].position.y + 40,
                     20,
-                    RED);
+                    WHITE);
             }
         }
 
         DrawDebugHitboxes(&cora, enemies, MAX_ENEMIES, showHitboxes);
 
         // *** Aqui que você coloca a exibição da vida e da mensagem ***
-        DrawText(TextFormat("Vida: %d", cora.health), 10, 10, 20, RED);
+        DrawText(TextFormat("Vida: %d", cora.health), 10, 10, 20, WHITE);
 
         if (!cora.isAlive) {
-            DrawText("Voce morreu!", screenWidth / 2 - 80, screenHeight / 2, 30, RED);
+            DrawText("Cora morreu!", screenWidth / 2 - 80, screenHeight / 2, 30, WHITE);
         }
 
         EndDrawing();
