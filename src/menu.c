@@ -86,14 +86,17 @@ int menu(void)
 
         EndDrawing();
 
-        if (state == GAME) {
-            CloseWindow();
-            map1();
-            return 0;
+        if (state == GAME || state == EXIT) {
+            break;
         }
     }
 
     CloseWindow();
+
+    if (state == GAME) {
+        map1(); // deixa o map1 lidar com a própria janela se precisar
+    }
+
     return 0;
 }
 

@@ -24,7 +24,6 @@ typedef enum {
     STATE_COUNT // total de estados
 } AnimationState;
 
-
 typedef struct {
     Texture2D textures[STATE_COUNT][DIR_COUNT]; // [idle|walk|dead][up|down|left|right|idle]
     int frames[STATE_COUNT][DIR_COUNT];
@@ -51,6 +50,8 @@ typedef struct {
 Cora initCora(CoraAnimations anims);
 void updateCora(Cora* cora);
 void drawCora(Cora* cora);
+//void UnloadCora(Cora* cora);
+void UnloadCoraAnimations(CoraAnimations* anims);
 void checkCoraCollision(Cora* cora, Enemy* enemies, int enemyCount);
 
 

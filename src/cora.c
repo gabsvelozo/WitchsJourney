@@ -50,10 +50,12 @@ Cora initCora(CoraAnimations anims) {
     cora.frameRec = (Rectangle){ 0, 0, (float)(current.width / maxFrames), (float)current.height };
     */
     // Define hitbox com base no tamanho do primeiro sprite carregado
+    float marginX = cora.frameRec.width * 0.2f;
+    
     cora.hitbox = (Rectangle){
-        cora.position.x,
+        cora.position.x + marginX,
         cora.position.y,
-        cora.frameRec.width,
+        cora.frameRec.width - 2 * marginX,
         cora.frameRec.height
     };
 
@@ -121,20 +123,14 @@ void updateCora(Cora* cora) {
         cora->animState = STATE_WALK;
 
         // Determina direção
-        if (input.y < 0) {
-            if (input.x < 0) cora->direction = DIR_UP_LEFT;
-            else if (input.x > 0) cora->direction = DIR_UP_RIGHT;
-            else cora->direction = DIR_UP;
-        }
-        else if (input.y > 0) {
-            cora->direction = DIR_DOWN;
-        }
-        else if (input.x < 0) {
-            cora->direction = DIR_LEFT;
-        }
-        else if (input.x > 0) {
-            cora->direction = DIR_RIGHT;
-        }
+        if (input.x < 0 && input.y < 0) cora->direction = DIR_UP_LEFT;
+        else if (input.x > 0 && input.y < 0) cora->direction = DIR_UP_RIGHT;
+        //else if (input.x < 0 && input.y > 0) cora->direction = DIR_DOWN_LEFT;
+        //else if (input.x > 0 && input.y > 0) cora->direction = DIR_DOWN_RIGHT;
+        else if (input.x < 0) cora->direction = DIR_LEFT;
+        else if (input.x > 0) cora->direction = DIR_RIGHT;
+        else if (input.y < 0) cora->direction = DIR_UP;
+        else if (input.y > 0) cora->direction = DIR_DOWN;
     }
     else {
         cora->animState = STATE_IDLE;
@@ -189,11 +185,20 @@ void drawCora(Cora* cora) {
     DrawText(TextFormat("HP: %d", cora->health), cora->position.x, cora->position.y - 20, 20, RED);
 }
 
-/*void unloadCora(Cora* cora) {
-    for (int i = 0; i < 5; i++) {
-        UnloadTexture(cora->textures[i]);
+void UnloadCora(Cora* cora) {
+    // Libera as texturas das animações
+    UnloadCoraAnimations(&cora->anims);
+
+    // Adicione aqui qualquer outra liberação de recursos necessária
+}
+
+void UnloadCoraAnimations(CoraAnimations* anims) {
+    for (int state = 0; state < STATE_COUNT; state++) {
+        for (int dir = 0; dir < DIR_COUNT; dir++) {
+            UnloadTexture(anims->textures[state][dir]);
+        }
     }
-}*/
+}
 
 void checkCoraCollision(Cora* cora, Enemy* enemies, int enemyCount) {
     if (!cora->isAlive) return;

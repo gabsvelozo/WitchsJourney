@@ -10,7 +10,6 @@ Texture2D background1;
 Texture2D background2;
 Texture2D background3;
 Texture2D background4;
-Texture2D player;
 Texture2D enemy;
 Texture2D enemy2;
 Texture2D enemy3;
@@ -19,7 +18,7 @@ Texture2D enemy5;
 Texture2D enemy6;
 Texture2D backgroundleaderboard;
 
-CoraAnimations coraAnims;
+CoraAnimations anims;
 
 void InitAssets(void) {
 	backgroundmenu = LoadTexture("resources/assets/backgroundmenu.png");
@@ -30,30 +29,30 @@ void InitAssets(void) {
     background3 = LoadTexture("resources/assets/background3.png");
     background4 = LoadTexture("resources/assets/background4.png");
 
-    coraAnims.textures[STATE_WALK][DIR_DOWN] = LoadTexture("\resources\assets\Walk\walk_Down.png");
-    coraAnims.textures[STATE_WALK][DIR_UP] = LoadTexture("\resources\assets\Walk\walk_Up.png");
-    coraAnims.textures[STATE_WALK][DIR_LEFT] = LoadTexture("\resources\assets\Walk\walk_Left_Down.png");
-    coraAnims.textures[STATE_WALK][DIR_RIGHT] = LoadTexture("\resources\assets\Walk\walk_Right_Down.png");
-    coraAnims.textures[STATE_WALK][DIR_UP_LEFT] = LoadTexture("\resources\assets\Walk\walk_Left_Up.png");
-    coraAnims.textures[STATE_WALK][DIR_UP_RIGHT] = LoadTexture("\resources\assets\Walk\walk_Right_Up.png");
+    anims.textures[STATE_WALK][DIR_DOWN] = LoadTexture("/resources/assets/Walk/walk_Down.png");
+    anims.textures[STATE_WALK][DIR_UP] = LoadTexture("/resources/assets/Walk/walk_Up.png");
+    anims.textures[STATE_WALK][DIR_LEFT] = LoadTexture("/resources/assets/Walk/walk_Left_Down.png");
+    anims.textures[STATE_WALK][DIR_RIGHT] = LoadTexture("/resources/assets/Walk/walk_Right_Down.png");
+    anims.textures[STATE_WALK][DIR_UP_LEFT] = LoadTexture("/resources/assets/Walk/walk_Left_Up.png");
+    anims.textures[STATE_WALK][DIR_UP_RIGHT] = LoadTexture("/resources/assets/Walk/walk_Right_Up.png");
 
-    coraAnims.textures[STATE_IDLE][DIR_DOWN] = LoadTexture("\resources\assets\Idle\Idle_Down.png");
-    coraAnims.textures[STATE_IDLE][DIR_UP] = LoadTexture("\resources\assets\Idle\Idle_Up.png");
-    coraAnims.textures[STATE_IDLE][DIR_LEFT] = LoadTexture("\resources\assets\Idle\Idle_Left_Down.png");
-    coraAnims.textures[STATE_IDLE][DIR_RIGHT] = LoadTexture("\resources\assets\Idle\Idle_Right_Down.png");
-    coraAnims.textures[STATE_IDLE][DIR_UP_LEFT] = LoadTexture("\resources\assets\Idle\Idle_Left_Up.png");
-    coraAnims.textures[STATE_IDLE][DIR_UP_RIGHT] = LoadTexture("\resources\assets\Idle\Idle_Right_Up.png");
+    anims.textures[STATE_IDLE][DIR_DOWN] = LoadTexture("/resources/assets/Idle/Idle_Down.png");
+    anims.textures[STATE_IDLE][DIR_UP] = LoadTexture("/resources/assets/Idle/Idle_Up.png");
+    anims.textures[STATE_IDLE][DIR_LEFT] = LoadTexture("/resources/assets/Idle/Idle_Left_Down.png");
+    anims.textures[STATE_IDLE][DIR_RIGHT] = LoadTexture("/resources/assets/Idle/Idle_Right_Down.png");
+    anims.textures[STATE_IDLE][DIR_UP_LEFT] = LoadTexture("/resources/assets/Idle/Idle_Left_Up.png");
+    anims.textures[STATE_IDLE][DIR_UP_RIGHT] = LoadTexture("/resources/assets/Idle/Idle_Right_Up.png");
 
-    coraAnims.textures[STATE_DEAD][DIR_DOWN] = LoadTexture("\resources\assets\Death\death_Down.png");
-    coraAnims.textures[STATE_DEAD][DIR_UP] = LoadTexture("\resources\assets\Death\death_Up.png");
-    coraAnims.textures[STATE_DEAD][DIR_LEFT] = LoadTexture("\resources\assets\Death\death_Left_Down.png");
-    coraAnims.textures[STATE_DEAD][DIR_RIGHT] = LoadTexture("\resources\assets\Death\death_Right_Down.png");
-    coraAnims.textures[STATE_DEAD][DIR_UP_LEFT] = LoadTexture("\resources\assets\Death\death_Left_Up.png");
-    coraAnims.textures[STATE_DEAD][DIR_UP_RIGHT] = LoadTexture("\resources\assets\Death\death_Right_Up.png");
+    anims.textures[STATE_DEAD][DIR_DOWN] = LoadTexture("/resources/assets/Death/death_Down.png");
+    anims.textures[STATE_DEAD][DIR_UP] = LoadTexture("/resources/assets/Death/death_Up.png");
+    anims.textures[STATE_DEAD][DIR_LEFT] = LoadTexture("/resources/assets/Death/death_Left_Down.png");
+    anims.textures[STATE_DEAD][DIR_RIGHT] = LoadTexture("/resources/assets/Death/death_Right_Down.png");
+    anims.textures[STATE_DEAD][DIR_UP_LEFT] = LoadTexture("/resources/assets/Death/death_Left_Up.png");
+    anims.textures[STATE_DEAD][DIR_UP_RIGHT] = LoadTexture("/resources/assets/Death/death_Right_Up.png");
 
     for (int s = 0; s < STATE_COUNT; s++) {
         for (int d = 0; d < DIR_COUNT; d++) {
-            coraAnims.frames[s][d] = 6;
+            anims.frames[s][d] = 6;
         }
     }
 
@@ -73,13 +72,8 @@ void DrawGame(void) {
 
 	DrawTexture(backgroundmenu, 0, 0, WHITE);
 	DrawTexture(backgroundinstrucoes, 0, 0, WHITE);
-    DrawTexture(backgroundraiz, 0, 0, WHITE);
 	DrawTexture(background1, 0, 0, WHITE);
-	DrawTexture(background2, 0, 0, WHITE);
-	DrawTexture(background3, 0, 0, WHITE);
-	DrawTexture(background4, 0, 0, WHITE);
 	DrawTexture(backgroundleaderboard, 0, 0, WHITE);
-    DrawTexture(player, 100, 100, WHITE);
     DrawTexture(enemy, 300, 100, WHITE);
     DrawTexture(enemy2, 350, 100, WHITE);
     DrawTexture(enemy3, 400, 100, WHITE);
@@ -98,8 +92,6 @@ void UnloadAssets(void) {
     UnloadTexture(background2);
     UnloadTexture(background3);
     UnloadTexture(background4);
-
-    UnloadTexture(player);
 
     UnloadTexture(enemy);
     UnloadTexture(enemy2);

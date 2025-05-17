@@ -20,7 +20,7 @@ void map1(void) {
 
     //Texture2D background1 = LoadTexture("resources/assets/background1.png");
     Texture2D magicTex = LoadTexture("resources/assets/projetil.png");
-    Cora cora = initCora(coraAnims);
+    Cora cora = initCora(anims);
     
 
     // Cria o projétil e deixa inativo
@@ -104,7 +104,7 @@ void map1(void) {
             }
         }
 
-        DrawDebugHitboxes(&cora, enemies, MAX_ENEMIES, showHitboxes);
+       
 
         // *** Aqui que você coloca a exibição da vida e da mensagem ***
         DrawDebugHitboxes(&cora, enemies, MAX_ENEMIES, showHitboxes);
@@ -118,7 +118,7 @@ void map1(void) {
         EndDrawing();
     }
 
-    unloadCora(&cora);
+    UnloadCoraAnimations(&cora.anims);
 
     // Descarregar inimigos
     for (int i = 0; i < MAX_ENEMIES; i++) {

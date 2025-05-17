@@ -2,6 +2,7 @@
 #define DRAW_H
 
 #include <raylib.h>
+#include "cora.h"
 
 extern Texture2D backgroundmenu;
 extern Texture2D backgroundinstrucoes;
@@ -10,7 +11,6 @@ extern Texture2D background1;
 extern Texture2D background2;
 extern Texture2D background3;
 extern Texture2D background4;
-extern Texture2D player;
 extern Texture2D enemy;
 extern Texture2D enemy2;
 extern Texture2D enemy3;
@@ -19,7 +19,8 @@ extern Texture2D enemy5;
 extern Texture2D enemy6;
 extern Texture2D backgroundleaderboard;
 
-extern CoraAnimations coraAnims;
+extern Texture2D background1changed;
+extern CoraAnimations anims;
 
 void InitAssets(void);
 void UnloadAssets(void);
